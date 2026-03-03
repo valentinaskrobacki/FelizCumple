@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= HERO ESTADIO MODE ================= */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #006b3f,
+      #006b3f 30px,
+      #009e60 30px,
+      #009e60 60px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      #ffffff,
+      #ffffff 30px,
+      #ff7a00 30px,
+      #ff7a00 60px
+    );
+
+  background-size: 200% 200%;
+  animation: fondoMovimiento 20s linear infinite;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay para suavizar */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 107, 63, 0.65);
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fondoMovimiento {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.foto {
+  width: 260px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ================= TÍTULO ANIMADO ================= */
+
+
+.titulo-animado {
+  font-size: 3rem;
+  text-align: center;
+font-family: "Monoton", sans-serif;
+
+  background: linear-gradient(
+    90deg,
+    #006b3f,
+    #009e60,
+    #ffffff,
+    #ff7a00,
+    #006b3f
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    moverColores 6s linear infinite,
+    lucesEstadio 2.5s ease-in-out infinite;
+}
+
+/* Movimiento suave del degradado */
+
+@keyframes moverColores {
+  0% { background-position: 0%; }
+  100% { background-position: 300%; }
+}
+
+/* Luces que simulan prender y apagar */
+
+@keyframes lucesEstadio {
+  0% {
+    text-shadow:
+      0 0 5px rgba(255,255,255,0.2),
+      0 0 10px rgba(0,158,96,0.2),
+      0 0 20px rgba(255,122,0,0.2);
+  }
+
+  50% {
+    text-shadow:
+      0 0 10px rgba(255,255,255,0.9),
+      0 0 25px rgba(0,158,96,0.8),
+      0 0 40px rgba(255,122,0,0.8);
+  }
+
+  100% {
+    text-shadow:
+      0 0 5px rgba(255,255,255,0.2),
+      0 0 10px rgba(0,158,96,0.2),
+      0 0 20px rgba(255,122,0,0.2);
+  }
+}
+
+/* ================= SECCIÓN TE AMO ================= */
+
+.te-amo {
+  background: url("img/Mati2.jpeg") center/cover no-repeat;
+  position: relative;
+  color: white;
+}
+
+.overlay {
+  background: rgba(0, 107, 63, 0.7);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.te-amo h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease forwards;
+}
+
+.baja {
+  font-size: 1.5rem;
+  animation: bounceGlow 1.5s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= GIFT SECTION ================= */
+
+.gift-section {
+  width: 100%;
+  height: 100vh;
+}
+
+/* FONDO GEOMÉTRICO BANFIELD */
+
+.container {
+  width: 100%;
+  height: 100%;
+  --verde: #006b3f;
+
+  --bg: linear-gradient(
+      45deg,
+      var(--verde) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--verde) 75%,
+      var(--verde)
+    ),
+    linear-gradient(
+      45deg,
+      var(--verde) 25%,
+      white 25%,
+      white 75%,
+      var(--verde) 75%,
+      var(--verde)
+    );
+
+  --bgsize: 60px 60px;
+  --bgposition: 0 0, 30px 30px;
+
+  background-color: white;
+  background-image: var(--bg);
+  background-size: var(--bgsize);
+  background-position: var(--bgposition);
+
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+
+  box-shadow: inset 0px 0px 200px rgba(0, 107, 63, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container::before {
+  content: "";
+  width: 100%;
+  height: 150%;
+  box-shadow: 
+    0px -100px 300px rgba(0,0,0,0.4),
+    inset 0px 100px 300px rgba(0, 107, 63, 0.4);
+  position: absolute;
+  top: 55%;
+  background-image: var(--bg);
+  background-size: var(--bgsize);
+  background-position: var(--bgposition);
+  transform-origin: top;
+  transform: rotateX(80deg);
+}
+
+/* TARJETA */
+
+.gift-card {
+  background: rgba(48, 48, 48, 0.041);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  padding: 35px 25px;
+  border-radius: 25px;
+  text-align: center;
+
+  border: 1.5px solid rgba(216, 86, 0, 0.4);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25),
+    0 0 25px rgba(0, 107, 62, 0.158);
+
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 0.8s ease;
+  z-index: 2;
+
+  width: 85%;
+  max-width: 380px;
+}
+
+.gift-card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gift-card h2 {
+  color: #006b3f;
+  margin-bottom: 15px;
+}
+
+.gift-card h3 {
+  margin: 15px 0;
+  font-size: 1.8rem;
+}
+
+/* BOTÓN */
+
+.btn-descargar {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #006b3f;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-descargar:hover {
+  background: #009e60;
+  transform: scale(1.05);
+}
+
+
+/* ================= IPHONE 12 PRO OPTIMIZADO ================= */
+
+@media (max-width: 430px) {
+
+  section {
+    min-height: 100svh; /* mejor que 100vh en iPhone */
+    padding: 20px;
+  }
+
+  /* HERO */
+
+  .foto {
+    width: 200px;
+    margin-bottom: 30px;
+  }
+
+  .titulo-animado {
+    font-size: 2.2rem;
+  }
+
+  /* SECCIÓN TE AMO */
+
+  .te-amo h2 {
+    font-size: 2.3rem;
+  }
+
+  .baja {
+    font-size: 1.2rem;
+  }
+
+  /* GIFT SECTION */
+
+  .gift-card {
+    width: 90%;
+    max-width: 330px;
+    padding: 28px 20px;
+  }
+
+  .gift-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .gift-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .gift-card p {
+    font-size: 1rem;
+  }
+
+  .btn-descargar {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+}
